@@ -11,8 +11,11 @@ class AddTaskBottomSheet extends StatefulWidget {
 
 class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
   DateTime selectedDate = DateTime.now() ;
+  var formkey = GlobalKey<FormState>() ;
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width ;
+    double height = MediaQuery.of(context).size.height ;
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child:  Column(
@@ -20,6 +23,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
           Text('Add New Task' ,
             style:Theme.of(context).textTheme.titleMedium),
           Form(
+            key: formkey ,
              child:Column(
                crossAxisAlignment: CrossAxisAlignment.stretch,
                children: [
@@ -73,7 +77,15 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                    ),
                  ),
                  ElevatedButton(
-                     onPressed: (){},
+                   style: ElevatedButton.styleFrom(
+                      minimumSize: Size(60,40) ,
+                       shape: RoundedRectangleBorder(
+                         borderRadius: BorderRadius.circular(30)),
+                       // minimumSize :const Size(40 , 40)
+                   ),
+                     onPressed: (){
+                       addTask() ;
+                     },
                     child: Text("Add",
                       style: Theme.of(context).textTheme.titleLarge ,))
                ],
@@ -82,7 +94,6 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
       ),
     );
   }
-
   void showCalender()async{
     var chosenDate = await showDatePicker(
         context: context,
@@ -94,5 +105,12 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
            selectedDate = chosenDate ;
            setState(() {});
          }
+  }
+
+  void addTask() {
+    if(formkey.currentState?.validate() == true){
+
+    }
+
   }
 }
