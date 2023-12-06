@@ -25,11 +25,17 @@ class TasksList extends StatelessWidget {
           locale: 'en_ISO',
         ),
         Expanded(
-          child: ListView.builder(
+          child: ListView.separated(
+            padding: const EdgeInsets.all(20),
               itemCount: 20,
               itemBuilder:(context,index){
-                return TaskWidget() ;
-              } ),
+                return const TaskWidget() ;
+              }, separatorBuilder: (BuildContext context, int index) {
+              return const Divider(
+                color: Colors.transparent,
+                thickness: 5,
+              ) ;
+          }, ),
         )
 
 

@@ -17,7 +17,7 @@ class TaskWidget extends StatelessWidget {
     children:  [
     SlidableAction(
     borderRadius:
-    BorderRadius.only(
+    const BorderRadius.only(
       topLeft: Radius.circular(25),
       bottomLeft: Radius.circular(25),
     ),
@@ -32,7 +32,7 @@ class TaskWidget extends StatelessWidget {
     ],),
       child: Container(
         height: height * .14,
-        margin: const EdgeInsets.all(20),
+        // margin: const EdgeInsets.all(20),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
